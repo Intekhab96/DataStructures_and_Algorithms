@@ -2,17 +2,17 @@ import java.io.*;
 import java.util.*;
 
 public class AreTreeSimilar {
-    private static class Node {
+     static class Node {
         int data;
         ArrayList<Node> children = new ArrayList<>();
     }
 
     public static void display(Node node) {
-        String str = node.data + " -> ";
+        StringBuilder str = new StringBuilder(node.data + " -> ");
         for (Node child : node.children) {
-            str += child.data + ", ";
+            str.append(child.data).append(", ");
         }
-        str += ".";
+        str.append(".");
         System.out.println(str);
 
         for (Node child : node.children) {
@@ -24,12 +24,12 @@ public class AreTreeSimilar {
         Node root = null;
 
         Stack<Node> st = new Stack<>();
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == -1) {
+        for (int j : arr) {
+            if (j == -1) {
                 st.pop();
             } else {
                 Node t = new Node();
-                t.data = arr[i];
+                t.data = j;
 
                 if (st.size() > 0) {
                     st.peek().children.add(t);
